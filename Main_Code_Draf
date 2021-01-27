@@ -1,0 +1,43 @@
+def password_generator():
+    def password_saver():
+        """print('s1.join(s2):', s1.join(s2))"""
+        for i in range(len(password_elements)):
+            password_elements[i].join(password_elements[i])
+        password = password_elements[0]
+        fp = open( "passwords.txt ","w")
+        fp.write(password)
+        fp.close()
+        print(password)
+        
+    import random
+
+    strings=["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t"
+         ,"u","v","w","x","y","z","A","B","C","D","E","F","G","H","I","J","K","L",
+         "M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+    integers=["0","1","2","3","4","5","6","7","8","9"]
+    main_category_choice = ["integers","strings"]
+    password_elements = []
+    password_length = int(input("Please choose how long do you want your password"))
+    counter = 0
+    while counter != password_length:
+        random_choice=random.choice(main_category_choice)
+        if random_choice == "strings":
+            password_element_choice = random.choice(strings)
+            password_elements.append(password_element_choice)
+            counter=counter+1
+        if random_choice == "integers":
+            password_element_choice = random.choice(integers)
+            password_elements.append(password_element_choice)
+            counter=counter+1
+        if counter == password_length:
+            print(password_elements)
+            user_save_choice = str(input("Do you want to save this password to your computer: (T/N)"))
+            if user_save_choice == "T":
+                password_saver()
+            
+            if user_save_choice == "F":
+                print("See ya'")
+                break
+    
+
+password_generator()    
